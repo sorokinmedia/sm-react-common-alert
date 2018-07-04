@@ -1,5 +1,5 @@
 {
-  "name": "sm-front-common",
+  "name": "sm-react-common-alert",
   "version": "1.0.0",
   "description": "Common frontend components for SM",
   "main": "index.js",
