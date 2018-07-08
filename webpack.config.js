@@ -27,3 +27,4 @@ module.exports = {
 		'react': 'commonjs react'
 	}
 };
+
