@@ -1,6 +1,6 @@
 {
 	"name": "sm-react-common-alert",
-	"version": "0.0.1",
+	"version": "1.0.2",
 	"description": "Common frontend components for SM",
 	"main": "dist/index.js",
 	"scripts": {
@@ -9,12 +9,10 @@
 		"release": "npm run build:dev && npm run build:prod",
 		"build:prod": "cross-env NODE_ENV=production rollup -c",
 		"build:dev": "cross-env NODE_ENV=development rollup -c",
+		"publish": "npm publish",
 		"test": "jest",
 		"test:coverage": "jest --coverage --watch",
 		"test:watch": "npm run test -- --watch"
-	},
-	"publishConfig": {
-		"access": "restricted"
 	},
 	"repository": {
 		"type": "git",
