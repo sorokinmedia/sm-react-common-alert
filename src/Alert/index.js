@@ -1,0 +1,70 @@
+import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import AlertContainer from 'react-alert'
+
+class Alert extends Component {
+
+	componentDidMount() {
+		if (this.props.showAlert) {
+			this.showErrorAlert(this.props.showAlert)
+		}
+	}
+
+	componentDidUpdate() {
+		const { updateResponse } = this.props;
+		if (updateResponse) {
+			// error
+			if (updateResponse.error) {
+				this.showErrorAlert(updateResponse.error || updateResponse.message);
+				this.props.clearResponse()
+			}
+		}
+	}
+
+	alertOptions = {
+		offset: 14,
+		position: 'top right',
+		theme: 'dark',
+		time: 10000,
+		transition: 'fade'
+	}
+
+	showSuccessAlert = (text) => {
+		this.msg.show(<span className="text-green">{text}</span>, {
+			time: 5000,
+			type: 'success',
+			icon: <i className="icon fa" />
+		})
+	}
+	showErrorAlert = (text) => {
+		this.msg.show(<span className="text-red">{text}</span>, {
+			time: 100000,
+			type: 'error',
+			icon: <i className="icon fa fa-ban" />
+		})
+	};
+
+
+	render() {
+		return (
+			<div>
+				<AlertContainer
+					ref={(a) => {
+						this.msg = a;
+						return this.msg
+					}}
+					{...this.alertOptions}
+				/>
+			</div>
+		)
+	}
+}
+
+
+Alert.propTypes = {
+	updateResponse: PropTypes.object,
+	clearResponse: PropTypes.func,
+	showAlert: PropTypes.string
+};
+
+export default Alert

@@ -1,23 +1,84 @@
 {
-  "name": "sm-react-common-alert",
-  "version": "1.0.0",
-  "description": "Common frontend components for SM",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/magarampage/sm-front-common.git"
-  },
-  "keywords": [
-    "react",
-    "components"
-  ],
-  "author": "magarampage",
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/magarampage/sm-front-common/issues"
-  },
-  "homepage": "https://github.com/magarampage/sm-front-common#readme"
+	"name": "sm-react-common-alert",
+	"version": "0.0.1",
+	"description": "Common frontend components for SM",
+	"main": "dist/index.js",
+	"scripts": {
+		"start": "webpack-dev-server --hot --inline --mode development",
+		"transpile": "babel src -d dist",
+		"prepublishOnly": "npm run transpile",
+		"test": "jest",
+		"test:coverage": "jest --coverage --watch",
+		"test:watch": "npm run test -- --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/magarampage/sm-front-common.git"
+	},
+	"keywords": [
+		"react",
+		"components"
+	],
+	"author": "magarampage",
+	"license": "BSD-3-Clause",
+	"bugs": {
+		"url": "https://github.com/magarampage/sm-front-common/issues"
+	},
+	"homepage": "https://github.com/magarampage/sm-front-common#readme",
+	"peerDependencies": {
+		"react": "^16.0.0",
+		"react-dom": "^16.0.0",
+		"react-alert": "2.4.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^8.2.3",
+		"babel-jest": "^22.4.3",
+		"babel-loader": "^7.1.5",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-es2015": "^6.22.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-react-hmre": "^1.1.1",
+		"babel-preset-stage-0": "^6.5.0",
+		"cross-env": "^5.1.6",
+		"css-loader": "^0.28.10",
+		"eslint": "4.9.0",
+		"eslint-config-airbnb": "^16.1.0",
+		"eslint-plugin-import": "2.7.0",
+		"eslint-plugin-jsx-a11y": "6.0.2",
+		"eslint-plugin-react": "7.4.0",
+		"file-loader": "^1.1.11",
+		"image-webpack-loader": "^4.2.0",
+		"imports-loader": "^0.8.0",
+		"jest": "20.0.4",
+		"jest-css-modules": "^1.1.0",
+		"mini-css-extract-plugin": "^0.2.0",
+		"node-sass": "^4.9.0",
+		"postcss-loader": "^2.1.1",
+		"prop-types": "^15.6.2",
+		"react-addons-test-utils": "^15.6.2",
+		"react-test-renderer": "^16.2.0",
+		"react-testing-library": "^2.3.0",
+		"redux-mock-store": "^1.5.1",
+		"sinon": "^4.5.0",
+		"style-loader": "^0.20.3",
+		"trigger-event": "^1.0.3",
+		"url-loader": "^1.0.1",
+		"webpack": "^4.1.1",
+		"webpack-cli": "^2.0.12",
+		"webpack-dev-server": "^3.1.4"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"src/**/*.js"
+		],
+		"transform": {
+			".*": "./node_modules/jest-css-modules"
+		},
+		"moduleNameMapper": {
+			"\\.(css|less)$": "identity-obj-proxy"
+		}
+	}
 }
