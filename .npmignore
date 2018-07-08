@@ -7,8 +7,10 @@
 /.gitignore
 /package.json
 /yarn.lock
-/webpack.config.js
 /README.md
 /package-lock.json
 /node_modules/
 /.babelrc
+/lib/
+/yarn-error.log
+/rollup.config.js

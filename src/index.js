@@ -2,7 +2,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import AlertContainer from 'react-alert'
 
-export class Alert extends Component {
+class Alert extends Component {
+
+	static propTypes = {
+		updateResponse: PropTypes.object,
+		clearResponse: PropTypes.func,
+		showAlert: PropTypes.string
+	};
 
 	componentDidMount() {
 		if (this.props.showAlert) {
@@ -60,10 +66,4 @@ export class Alert extends Component {
 	}
 }
 
-
-Alert.propTypes = {
-	updateResponse: PropTypes.object,
-	clearResponse: PropTypes.func,
-	showAlert: PropTypes.string
-};
-
+export default Alert

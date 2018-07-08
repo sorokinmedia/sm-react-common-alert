@@ -1,30 +1,41 @@
-var path = require('path');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
-	entry: [
-		'babel-polyfill', './src/index.js'
-	],
-	output: {
-		path: path.resolve(__dirname, 'build'),
-		filename: 'index.js',
-		libraryTarget: 'commonjs2'
-	},
+	devtool: 'source-map',
+	entry: './examples/index.js',
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, 'src'),
-				exclude: /(node_modules|bower_components|build)/,
+				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['env']
-					}
+					loader: "babel-loader"
 				}
+			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: "html-loader",
+						options: { minimize: true }
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [MiniCssExtractPlugin.loader, "css-loader"]
 			}
 		]
 	},
-	externals: {
-		'react': 'commonjs react'
-	}
+	plugins: [
+		new HtmlWebPackPlugin({
+			template: "./examples/index.html",
+			filename: "./index.html"
+		}),
+		new MiniCssExtractPlugin({
+			filename: "[name].css",
+			chunkFilename: "[id].css"
+		})
+	]
 };
-

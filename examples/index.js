@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import PropTypes from 'prop-types';
-import { Alert } from '../dist';
+import Alert from '../lib';
 
 class App extends Component {
 
 	render() {
-
 		return (
 			<div>
-				Example
-				<Alert />
+				<Alert showAlert="Error" />
 			</div>
 		)
 	}
@@ -18,4 +17,4 @@ class App extends Component {
 App.propTypes = {}
 App.defaultProps = {}
 
-export default App
+render(<App />, document.getElementById('root'));
