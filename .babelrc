@@ -8,5 +8,14 @@
 		],
 		"stage-0",
 		"react"
-	]
+	],
+	"env": {
+		"test": {
+			"presets": [
+				"env",
+				"react",
+				"stage-0"
+			]
+		}
+	}
 }

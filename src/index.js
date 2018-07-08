@@ -42,6 +42,7 @@ class Alert extends Component {
 			icon: <i className="icon fa" />
 		})
 	}
+
 	showErrorAlert = (text) => {
 		this.msg.show(<span className="text-red">{text}</span>, {
 			time: 100000,
