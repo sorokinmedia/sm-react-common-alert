@@ -9,8 +9,7 @@
 		"release": "npm run build:dev && npm run build:prod",
 		"build:prod": "cross-env NODE_ENV=production rollup -c",
 		"build:dev": "cross-env NODE_ENV=development rollup -c",
-		"publish": "npm publish",
-		"test": "jest",
+ 		"test": "jest",
 		"test:coverage": "jest --coverage --watch",
 		"test:watch": "npm run test -- --watch"
 	},
