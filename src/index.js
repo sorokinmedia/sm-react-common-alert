@@ -10,7 +10,13 @@ class Alert extends Component {
 		showAlert: PropTypes.string
 	};
 
+	constructor(props) {
+		super(props);
+		this.msg = {}
+	}
+
 	componentDidMount() {
+		console.log('did mount');
 		if (this.props.showAlert) {
 			this.showErrorAlert(this.props.showAlert)
 		}
@@ -21,7 +27,11 @@ class Alert extends Component {
 		if (updateResponse) {
 			// error
 			if (updateResponse.error) {
-				this.showErrorAlert(updateResponse.error || updateResponse.message);
+				this.showErrorAlert(updateResponse.error);
+				this.props.clearResponse()
+			}
+			if (updateResponse.success) {
+				this.showSuccessAlert(updateResponse.message);
 				this.props.clearResponse()
 			}
 		}
