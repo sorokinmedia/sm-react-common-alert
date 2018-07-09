@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/magarampage/sm-front-common.git"
+		"url": "git+https://github.com/magarampage/sm-react-common-alert.git"
 	},
 	"keywords": [
 		"react",
@@ -14,9 +14,9 @@
 	"author": "magarampage",
 	"license": "BSD-3-Clause",
 	"bugs": {
-		"url": "https://github.com/magarampage/sm-front-common/issues"
+		"url": "https://github.com/magarampage/sm-react-common-alert/issues"
 	},
-	"homepage": "https://github.com/magarampage/sm-front-common#readme",
+	"homepage": "https://github.com/magarampage/sm-react-common-alert#readme",
 	"peerDependencies": {
 		"prop-types": "^15.6.2",
 		"react": "^16.0.0",
