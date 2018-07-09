@@ -148,24 +148,20 @@ var possibleConstructorReturn = function (self, call) {
 var Alert = function (_Component) {
 	inherits(Alert, _Component);
 
-	function Alert() {
-		var _ref;
-
-		var _temp, _this, _ret;
-
+	function Alert(props) {
 		classCallCheck(this, Alert);
 
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
-		}
+		var _this = possibleConstructorReturn(this, (Alert.__proto__ || Object.getPrototypeOf(Alert)).call(this, props));
 
-		return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Alert.__proto__ || Object.getPrototypeOf(Alert)).call.apply(_ref, [this].concat(args))), _this), _this.alertOptions = {
+		_this.alertOptions = {
 			offset: 14,
 			position: 'top right',
 			theme: 'dark',
 			time: 10000,
 			transition: 'fade'
-		}, _this.showSuccessAlert = function (text) {
+		};
+
+		_this.showSuccessAlert = function (text) {
 			_this.msg.show(React__default.createElement(
 				'span',
 				{ className: 'text-green' },
@@ -175,7 +171,9 @@ var Alert = function (_Component) {
 				type: 'success',
 				icon: React__default.createElement('i', { className: 'icon fa' })
 			});
-		}, _this.showErrorAlert = function (text) {
+		};
+
+		_this.showErrorAlert = function (text) {
 			_this.msg.show(React__default.createElement(
 				'span',
 				{ className: 'text-red' },
@@ -185,12 +183,16 @@ var Alert = function (_Component) {
 				type: 'error',
 				icon: React__default.createElement('i', { className: 'icon fa fa-ban' })
 			});
-		}, _temp), possibleConstructorReturn(_this, _ret);
+		};
+
+		_this.msg = {};
+		return _this;
 	}
 
 	createClass(Alert, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			console.log('did mount');
 			if (this.props.showAlert) {
 				this.showErrorAlert(this.props.showAlert);
 			}
@@ -203,7 +205,11 @@ var Alert = function (_Component) {
 			if (updateResponse) {
 				// error
 				if (updateResponse.error) {
-					this.showErrorAlert(updateResponse.error || updateResponse.message);
+					this.showErrorAlert(updateResponse.error);
+					this.props.clearResponse();
+				}
+				if (updateResponse.success) {
+					this.showSuccessAlert(updateResponse.message);
 					this.props.clearResponse();
 				}
 			}

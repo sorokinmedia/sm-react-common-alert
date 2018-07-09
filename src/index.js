@@ -16,7 +16,6 @@ class Alert extends Component {
 	}
 
 	componentDidMount() {
-		console.log('did mount');
 		if (this.props.showAlert) {
 			this.showErrorAlert(this.props.showAlert)
 		}
