@@ -4,7 +4,7 @@ import React from 'react';
 import Alert from './index';
 
 configure({ adapter: new Adapter() });
-let spy
+let spy;
 
 
 function setup(customProps, lifeCycle = false) {
@@ -39,15 +39,29 @@ describe('Alert component', () => {
 		expect(spy).toHaveBeenCalled();
 	});
 
-	it('should componentDidUpdate called', () => {
-		const { container } = setup({})
-		const instance = container.instance();
-		instance.showErrorAlert = jest.fn(() => true)
-		container.setProps({
-			updateResponse: { error: "Error message" },
+	it('should componentDidUpdate called show alert message', () => {
+		const { container } = setup({
+			updateResponse: { error: 'Error message' },
 			clearResponse: jest.fn()
-		});
-		expect(instance.componentDidMount).toHaveBeenCalled()
+		}, true)
+		const instance = container.instance();
+		spy = jest.spyOn(instance, 'showErrorAlert')
+		instance.msg.show = jest.fn()
+		instance.componentDidUpdate();
+		expect(spy).toHaveBeenCalled()
 	});
+
+	it('should componentDidUpdate called show success message', () => {
+		const { container } = setup({
+			updateResponse: { success: 'Success message' },
+			clearResponse: jest.fn()
+		}, true)
+		const instance = container.instance();
+		spy = jest.spyOn(instance, 'showSuccessAlert')
+		instance.msg.show = jest.fn()
+		instance.componentDidUpdate();
+		expect(spy).toHaveBeenCalled()
+	});
+
 
 });

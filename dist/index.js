@@ -192,7 +192,6 @@ var Alert = function (_Component) {
 	createClass(Alert, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			console.log('did mount');
 			if (this.props.showAlert) {
 				this.showErrorAlert(this.props.showAlert);
 			}
