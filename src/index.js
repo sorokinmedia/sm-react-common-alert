@@ -60,7 +60,6 @@ class Alert extends Component {
 		})
 	};
 
-
 	render() {
 		return (
 			<div>
