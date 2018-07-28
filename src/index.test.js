@@ -63,5 +63,4 @@ describe('Alert component', () => {
 		expect(spy).toHaveBeenCalled()
 	});
 
-
 });
