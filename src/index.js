@@ -1,39 +1,18 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import AlertContainer from 'react-alert'
+import { isArray } from 'lodash'
 
 class Alert extends Component {
 
 	static propTypes = {
-		updateResponse: PropTypes.object,
+		updateResponse: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.array,
+		]),
 		clearResponse: PropTypes.func,
-		showAlert: PropTypes.string
-	};
-
-	constructor(props) {
-		super(props);
-		this.msg = {}
-	}
-
-	componentDidMount() {
-		if (this.props.showAlert) {
-			this.showErrorAlert(this.props.showAlert)
-		}
-	}
-
-	componentDidUpdate() {
-		const { updateResponse } = this.props;
-		if (updateResponse) {
-			// error
-			if (updateResponse.error) {
-				this.showErrorAlert(updateResponse.error);
-				this.props.clearResponse()
-			}
-			if (updateResponse.success) {
-				this.showSuccessAlert(updateResponse.message);
-				this.props.clearResponse()
-			}
-		}
+		showAlert: PropTypes.string,
+		showSuccessAlert: PropTypes.string,
 	}
 
 	alertOptions = {
@@ -42,6 +21,47 @@ class Alert extends Component {
 		theme: 'dark',
 		time: 10000,
 		transition: 'fade'
+	}
+
+	constructor(props) {
+		super(props)
+		this.msg = {}
+	}
+
+	componentDidMount() {
+		if (this.props.showAlert) {
+			this.showErrorAlert(this.props.showAlert)
+		}
+		if (this.props.showSuccessAlert) {
+			this.showSuccessAlert(this.props.showSuccessAlert)
+		}
+	}
+
+	componentDidUpdate() {
+		const { updateResponse } = this.props
+		if (isArray(updateResponse)) {
+			updateResponse.forEach((elem) => {
+				if (elem.error) {
+					this.showErrorAlert(elem.error)
+					this.props.clearResponse()
+				}
+				if (elem.success || elem.status) {
+					this.showSuccessAlert(elem.message)
+					this.props.clearResponse()
+				}
+			})
+		}
+
+		if (updateResponse) {
+			if (updateResponse.error) {
+				this.showErrorAlert(updateResponse.error)
+				this.props.clearResponse()
+			}
+			if (updateResponse.success || updateResponse.status) {
+				this.showSuccessAlert(updateResponse.message)
+				this.props.clearResponse()
+			}
+		}
 	}
 
 	showSuccessAlert = (text) => {
@@ -58,14 +78,14 @@ class Alert extends Component {
 			type: 'error',
 			icon: <i className="icon fa fa-ban" />
 		})
-	};
+	}
 
 	render() {
 		return (
 			<div>
 				<AlertContainer
 					ref={(a) => {
-						this.msg = a;
+						this.msg = a
 						return this.msg
 					}}
 					{...this.alertOptions}
