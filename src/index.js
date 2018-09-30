@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import AlertContainer from 'react-alert'
-import { isArray } from 'lodash'
 
 class Alert extends Component {
 
@@ -39,7 +38,7 @@ class Alert extends Component {
 
 	componentDidUpdate() {
 		const { updateResponse } = this.props
-		if (isArray(updateResponse)) {
+		if (Array.isArray(updateResponse)) {
 			updateResponse.forEach((elem) => {
 				if (elem.error) {
 					this.showErrorAlert(elem.error)
