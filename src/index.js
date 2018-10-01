@@ -42,12 +42,13 @@ class Alert extends Component {
 			updateResponse.forEach((elem) => {
 				if (elem.error) {
 					this.showErrorAlert(elem.error)
-					this.props.clearResponse()
 				}
 				if (elem.success || elem.status) {
 					this.showSuccessAlert(elem.message)
-					this.props.clearResponse()
 				}
+				this.props.clearResponse.forEach((clear) => {
+					clear()
+				})
 			})
 		}
 
