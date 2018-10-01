@@ -39,16 +39,16 @@ class Alert extends Component {
 	componentDidUpdate() {
 		const { updateResponse } = this.props
 		if (Array.isArray(updateResponse)) {
-			updateResponse.forEach((elem) => {
+			updateResponse.forEach((elem, i) => {
 				if (elem.error) {
 					this.showErrorAlert(elem.error)
+					this.props.clearResponse[i]()
 				}
 				if (elem.success || elem.status) {
 					this.showSuccessAlert(elem.message)
+					this.props.clearResponse[i]()
 				}
-				this.props.clearResponse.forEach((clear) => {
-					clear()
-				})
+
 			})
 		}
 
