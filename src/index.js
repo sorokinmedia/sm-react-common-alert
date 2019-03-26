@@ -42,11 +42,11 @@ class Alert extends Component {
 			updateResponse.forEach((elem, i) => {
 				if (elem.error) {
 					this.showErrorAlert(elem.error)
-					this.props.clearResponse[i]()
+					return this.props.clearResponse[i]()
 				}
 				if (elem.success || elem.status) {
 					this.showSuccessAlert(elem.message)
-					this.props.clearResponse[i]()
+					return this.props.clearResponse[i]()
 				}
 
 			})
@@ -55,11 +55,11 @@ class Alert extends Component {
 		if (updateResponse) {
 			if (updateResponse.error) {
 				this.showErrorAlert(updateResponse.error)
-				this.props.clearResponse()
+				return this.props.clearResponse()
 			}
 			if (updateResponse.success || updateResponse.status) {
 				this.showSuccessAlert(updateResponse.message)
-				this.props.clearResponse()
+				return this.props.clearResponse()
 			}
 		}
 	}
