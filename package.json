@@ -65,8 +65,8 @@
 		"start": "webpack-dev-server --hot --inline --mode development",
 		"prepublishOnly": "npm run release",
 		"release": "npm run build:dev && npm run build:prod",
-		"build:prod": "cross-env NODE_ENV=production rollup -c",
-		"build:dev": "cross-env NODE_ENV=development rollup -c",
+		"build:prod": "NODE_ENV=production rollup -c",
+		"build:dev": "NODE_ENV=development rollup -c",
 		"test": "jest",
 		"test:coverage": "jest --coverage --watchAll",
 		"test:watch": "npm run test -- --watchAll"
