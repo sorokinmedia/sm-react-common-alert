@@ -23,6 +23,15 @@
 		"react-alert": "2.4.0",
 		"react-dom": "^16.0.0"
 	},
+	"resolutions": {
+		"yargs-parser": "^13.1.1",
+		"node-notifier": "<8.0.1",
+		"node-fetch": "<2.6.1",
+		"glob-parent": "<5.1.2",
+		"braces": "<2.3.1",
+		"ansi-regex": "2.1.1",
+		"merge": "<2.1.1"
+	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
 		"babel-eslint": "^8.2.5",
@@ -31,7 +40,7 @@
 		"babel-plugin-external-helpers": "^6.22.0",
 		"babel-polyfill": "^6.26.0",
 		"babel-preset-env": "^1.6.1",
-		"babel-preset-react": "^6.24.1",
+		"babel-preset-react": "^6.23.0",
 		"babel-preset-stage-0": "^6.24.1",
 		"cross-env": "^5.2.0",
 		"css-loader": "^1.0.0",
